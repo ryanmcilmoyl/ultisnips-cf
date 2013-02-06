@@ -1,0 +1,66 @@
+#Script based snippets
+snippet comp
+	/**
+	*	${4: description}
+	*/
+	component extends="${1}" accessors="${2:true}" output="${3:false}" {
+		${5}
+	}
+snippet prop
+	property name="${1}" type="${2}" setter="${3:true}" getter="${4:true}"${5};
+snippet func
+	/**
+	* ${6:hint}
+	*/
+	${1:public} ${2:void} function ${3:functionName} (${4}) output="${5:false}" {
+		${7}
+	}
+snippet trans
+	transaction nested="${1:true}" {
+		${2}
+	}
+snippet rollback
+	transaction action="rollback";
+snippet query
+	${1:local.queryService} = new Query(datasource = ${2:variables.dsn});
+snippet qparam
+	${1:local.queryService}.addParam(name="${2:paramName}", value=${3:local.value}, cfsqltype="cf_sql_${4:varchar}");
+snippet queryAddRow
+	queryAddRow(${1:queryObj});${2}
+snippet querySetCell
+	querySetCell(${1:queryObj}, ${2:cellName}, ${3:cellValue}${4:, rowNum});${5}
+snippet if
+	if (${1:condition}) {
+		${2}
+	}
+snippet el 
+	else {
+		${1}
+	}
+snippet elif
+	else if (${1:condition}) {
+		${2}
+	}
+# Tag based snippets
+snippet cfarg
+	<cfargument
+		name="${1:varName}"
+		type="${2:string}"
+		required="${3:true}"
+		hint="${4}" />
+snippet cfcomp
+	<cfcomponent extends="${1}" output="${2:false"} hint="${3}" accessors="${4:true">
+		${5}
+	</cfcomponent>
+snippet cfprop
+	<cfproperty name="${1}" type="${2:string}" hint="${3}" setter="${4:true}" getter="${5:true}" />
+snippet cffunc
+	<cffunction 
+		access="${1:public}" 
+		name="${2:functionName}"
+		returnType="${3:void}"
+		output="${4:false"}
+		hint="${5:description}">
+		
+		${6}
+	</cffunction>
